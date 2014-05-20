@@ -1,0 +1,40 @@
+We’re envisioning a system with the following features. Let me know if you need me to clarify anything, or need help visualizing what we’re looking for.
+ 
+Tutor List
+·         At-a-glance (eg, a list of all tutors with columns for the following info)
+
+o   Name, email, phone, student(s), subjects, location
+
+·         Detailed (eg, click on a tutor to see a page with more info)
+
+o   Availability, Academic Director (AD), full address, student(s) with AD and subject, Interests, Learning Differences (y/n), bio, failed matches, notes
+
+Client List
+·         At-a-glance
+
+o   Status (active, inactive, prospect, did not move forward), student name, parent name, cell phone, home phone, email
+
+·         Detailed
+
+o   Tutor / subject / AD, home address, location code, billing address, school, age, accommodations, referral, notes
+
+ 
+Calendar
+·         Should be sortable by tutor, subject, or AD.
+
+·         Entries should include time, tutor, student, subject, and AD.
+
+·         Expiring a lesson series should not delete all trace of it (eg, school year ends, but we want to be able to see previous months’ sessions).
+
+HARRISON'S NOTES: 
+-client wants the information to be easily copied and pasted
+i.e. if it displays email, client wants to be able to copy and paste the text
+-client wants consistent fomatting of each field i.e. for dates, only accept input
+of type 5/19/14
+-STYLE GUIDELINES:
+ *2 space indents (replace text editor output tabs to 2 spaces)
+ *try to adhere to most of these style guidelines:
+ https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+ *MODULARITY!
+
+

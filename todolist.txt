@@ -1,0 +1,10 @@
+1) make a github account and create a gmail account so we can have a group chat (BE ONLINE)
+2) read up on koajs, i recently discovered it and realize that it's REALLY nice (in terms of code cleanliness and readability) compared to the framework I originally intended to use (express): both frameworks are built on top of the node.js platform and both frameworks are made by the same guy, koa is the successor of the express framework (see the git hub repo https://github.com/koajs/koa for more info)
+3) start looking up ways to implement this, I'm thinking for this we'll be using a lot of middleware libraries such as passport for authentication
+4) We'll have to all agree on a time estimate for this project (i.e. when can we actually have it done and delivered) + a cost estimate. Based on my initial meeting w/ the client, I think she was thinking of something that takes 120 hrs of work @ 50 dollars / hr  => 6k. I'll be splitting the money according to how much each person contributes (not judged by lines of code contributed; money isn't the primary concern for me). 
+
+Notes:
+1) It seems like since this project won't need a massive data store, we can use something like mongodb (even though mongodb is kinda shitty) to do it.
+2) The client stated that we should prioritize functionality over aesthetics.
+3) We should all write unit tests for the code we write to ease debugging and improve robustness. 
+4) Style guidelines: 2 space indents (make your editor output 2 spaces when pressing tab), make code modular (i.e. for SQL queries, make a class for the queries as opposed to sticking random queries in routing modules)
