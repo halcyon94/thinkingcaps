@@ -8,3 +8,4 @@ Notes:
 2) The client stated that we should prioritize functionality over aesthetics.
 3) We should all write unit tests for the code we write to ease debugging and improve robustness. 
 4) Style guidelines: 2 space indents (make your editor output 2 spaces when pressing tab), make code modular (i.e. for SQL queries, make a class for the queries as opposed to sticking random queries in routing modules)
+More on the google docs link in README
