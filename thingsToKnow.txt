@@ -23,6 +23,7 @@ when using koa, yield next moves to next middleware; upon return from last middl
 -Koa overview from one of the authors: http://jongleberry.com/koa.html
 -**learn to use the bluebird api to convert callback functions into promises: https://github.com/petkaantonov/bluebird/blob/master/API.md <- how we’ll be converting node callback functions to promises
 simple example for the above: http://blog.peterdecroos.com/blog/2014/02/01/koa-zero-to-todo-list/
+-bluebird api reference: https://github.com/petkaantonov/bluebird/blob/master/API.md
 
 Templating engine (if we need one)
 -will be using Handlebars (see koa-hbs)
