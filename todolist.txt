@@ -1,6 +1,6 @@
 1) make a github account and create a gmail account so we can have a group chat (BE ONLINE)
 2) read up on koajs, i recently discovered it and realize that it's REALLY nice (in terms of code cleanliness and readability) compared to the framework I originally intended to use (express): both frameworks are built on top of the node.js platform and both frameworks are made by the same guy, koa is the successor of the express framework (see the git hub repo https://github.com/koajs/koa for more info)
-3) start looking up ways to implement this, I'm thinking for this we'll be using a lot of middleware libraries such as passport for authentication
+3) start looking up ways to implement this, I'm thinking for this we'll be using a lot of middleware libraries such as passport for authentication (see koa-passport middleware), and handlebars for views rendering engine (see koa-hbs)
 4) We'll have to all agree on a time estimate for this project (i.e. when can we actually have it done and delivered) + a cost estimate. Based on my initial meeting w/ the client, I think she was thinking of something that takes 120 hrs of work @ 50 dollars / hr  => 6k. I'll be splitting the money according to how much each person contributes (not judged by lines of code contributed; money isn't the primary concern for me). 
 
 Notes:
