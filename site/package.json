@@ -1,0 +1,36 @@
+{
+  "name": "thinkingcaps",
+  "version": "0.0.0",
+  "description": "thinkingcaps website",
+  "main": "app.js",
+  "dependencies": {
+    "koa": "0.6.x",
+    "bluebird": "1.2.x",
+    "koa-common": "1.2.x",
+    "koa-passport": "^0.4.0",
+    "koa-session": ">= 2.0.0",
+    "koa-flash": ">= 0.0.3",
+    "koa-helmet": "0.0.x",
+    "koa-router": "3.1.x",
+    "koa-hbs": "^0.4.5",
+    "koa-body": "^0.0.4",
+    "bcrypt-nodejs": "0.0.3",
+    "rootpath": "0.1.x"
+  },
+  "engine": "node 0.11.9",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harrisonzhao/goprophet"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/harrisonzhao/goprophet/goprophetSite/bugs.txt"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-less": "^0.11.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
