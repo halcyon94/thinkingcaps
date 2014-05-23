@@ -22,11 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/harrisonzhao/goprophet"
+    "url": "https://github.com/harrisonzhao/thinkingcaps"
   },
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/harrisonzhao/goprophet/goprophetSite/bugs.txt"
+    "url": "https://github.com/harrisonzhao/thinkingcaps/site/bugs.txt"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
