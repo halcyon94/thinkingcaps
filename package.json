@@ -6,6 +6,7 @@
   "dependencies": {
     "koa": "0.6.x",
     "bluebird": "1.2.x",
+    "koa-bodyparser": "1.0.x",
     "koa-common": "1.2.x",
     "koa-passport": "^0.4.0",
     "koa-session": ">= 2.0.0",
@@ -14,6 +15,8 @@
     "koa-router": "3.1.x",
     "koa-hbs": "^0.4.5",
     "koa-body": "^0.0.4",
+    "co-monk": "1.0.x",
+    "monk": "x",
     "bcrypt-nodejs": "0.0.3",
     "rootpath": "0.1.x"
   },

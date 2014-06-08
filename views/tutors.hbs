@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}Tutors{{/block}}</title>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    } 
+    td{
+      white-space: nowrap;
+      overflow: hidden;
+      height: 25px;
+      border: 1px solid black;
+    }
+    table{
+      table-layout:fixed;
+    }
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+  <h1>Tutor List</h1>
+  <p>You have <strong>{{ tutors.length }}</strong> Tutor(s)!</p>
+  <p><a href="/tutor/new">Add a tutor</a></p>
+  <table border="1" id="tutors">
+      <tr>
+          <td>Name</td>
+	  <td><p>email</p></td>
+	  <td><p>phone</p></td>
+	  <td><p>students</p></td>
+	  <td><p>subjects</p></td>
+	  <td><p>location</p></td>
+      </tr>
+    {{#each tutors
+}}
+      <tr>
+          <td><a href="/tutor/{{this._id}}"><strong>{{ this.name }}</strong></a></td>
+	  <td><p>{{this.email}}</p></td>
+	  <td><p>{{this.phone}}</p></td>
+	  <td><p>{{#each this.students}}
+                    {{this.name}}
+                {{/each}}</p></td>
+	  <td><p>{{this.subjects}}</p></td>
+	  <td><p>{{this.location}}</p></td>
+      </tr>
+    {{/each}}
+  </table>
+    {{/block}}
+  </section>
+</body>
+</html>

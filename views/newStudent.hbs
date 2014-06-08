@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}New Student{{/block}}</title>
+  <script language="javascript">
+  tutor_num = 1;
+  function add() {
+    var num=tutor_num+1;
+    var tutor = document.createElement('input');
+    tutor.setAttribute('type', 'text');
+    tutor.setAttribute('name', 'tutor'+num);
+    tutor.setAttribute('placeholder', 'tutor'+num);
+    document.getElementById('tutors').appendChild(tutor);
+    var subject = document.createElement('input');
+    subject.setAttribute('type', 'text');
+    subject.setAttribute('name', 'subject'+num);
+    subject.setAttribute('placeholder', 'subject'+num);
+    document.getElementById('tutors').appendChild(subject);
+    var AD = document.createElement('input');
+    AD.setAttribute('type', 'text');
+    AD.setAttribute('name', 'AD'+num);
+    AD.setAttribute('placeholder', 'AD'+num);
+    document.getElementById('tutors').appendChild(AD);
+    tutor_num = tutor_num+1;
+    document.getElementById("tutor_id").value=tutor_num;
+  }
+
+  </script>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+  <h1>Add Student </h1>
+  <form action="/student/create" method="post">
+    <p><input type="hidden" name="tutor_num" id="tutor_id" value="1"></p>
+    <p><input type="text" placeholder="Name" name="name"></p>
+    <p><input type="radio" value="active" name="status">Active</p>
+    <p><input type="radio" value="inactive" name="status">Inactive</p>
+    <p><input type="radio" value="prospect" name="status">Prospect</p>
+    <p><input type="radio" value="did not move forward" name="status">Did not move forward</p> 
+    <p><input type="text" placeholder="Parent's name" name="parent_name"></p>
+    <p><input type="text" placeholder="Cell phone number" name="cell_num" ></p>
+    <p><input type="text" placeholder="Home phone number" name="home_num"></p>
+    <p><input type="text" placeholder="Email" name="email"></p>
+    <p id="tutors">
+    <input type="text" placeholder="tutor1" name="tutor1">
+    <input type="text" placeholder="subject1" name="subject1">
+    <input type="text" placeholder="AD1" name="AD1">
+    </p>
+    <input type="button" onClick="add()" value="Add Tutor">
+    <p><input type="text" placeholder="Home address" name="address_home"></p>
+    <p><input type="text" placeholder="Location code" name="location_code"></p>
+    <p><input type="text" placeholder="Billing address" name="address_bill"></p>
+    <p><input type="text" placeholder="School" name="school"></p>
+    <p><input type="text" placeholder="Age" name="age"></p>
+    <p><input type="text" placeholder="Accomodations" name="accom"></p>
+    <p><input type="text" placeholder="Referral" name="refer"></p>
+    <p><input type="text" placeholder="Notes" name="notes"></p>
+
+    <p><input type="submit" value="Create"></p>
+  </form>
+
+    {{/block}}
+  </section>
+</body>
+</html>
+

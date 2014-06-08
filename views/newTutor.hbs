@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}New Tutor{{/block}}</title>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+  <h1>Add Tutor </h1>
+  <form action="/tutor/create" method="post">
+    <p><input type="text" placeholder="Name" name="name"></p>
+    <p><input type="text" placeholder="Email" name="email"></p>
+    <p><input type="text" placeholder="Phone" name="phone"></p>
+    <p><input type="text" placeholder="Subjects" name="subjects"></p>
+    <p><input type="text" placeholder="Location" name="location"></p>
+    <p> Availability </p>
+    <p><input type="text" placeholder="Weekday" name="weekday">
+       <input type="text" placeholder="Hours" name="hours"></p>
+    <p><input type="text" placeholder="Academic Director" name="AD"></p>
+    <p><input type="text" placeholder="Full Address" name="address"></p>
+    <p><input type="text" placeholder="Interests" name="interests"></p>
+    <p><input type="text" placeholder="Learning Differences" name="learning_diff"></p>
+    <p><input type="text" placeholder="Biography" name="bio"></p>
+    <p><input type="text" placeholder="Failed matches" name="failed_matches"></p>
+    <p><input type="text" placeholder="Notes" name="notes"></p>
+
+    <p><input type="submit" value="Create"></p>
+  </form>
+    {{/block}}
+  </section>
+</body>
+</html>
+

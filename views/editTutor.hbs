@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}Edit Tutor{{/block}}</title>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+	<h1>Edit Tutor </h1>
+	<form action="/tutor/update" method="post">
+	    <p><input type="hidden" value="{{ tutor._id }}" name="id"></p>
+	    <p><input type="text" value="{{ tutor.name }}" name="name"></p>
+	    <p><input type="text" value="{{ tutor.email }}" name="email"></p>
+	    <p><input type="text" value="{{ tutor.phone }}" name="phone"></p>
+	    <p><input type="text" value="{{ tutor.subjects }}" name="subjects"></p>
+	    <p><input type="text" value="{{ tutor.location }}" name="location"></p>
+	    <p> Availability </p>
+	    <p><input type="text" value="{{tutor.weekday}}" name="weekday">
+	       <input type="text" value="{{tutor.hours}}" name="hours"></p>
+	    <p><input type="text" value="{{tutor.AD}}" name="AD"></p>
+	    <p><input type="text" value="{{tutor.address}}" name="address"></p>
+	    <p><input type="text" value="{{tutor.interests}}" name="interests"></p>
+	    <p><input type="text" value="{{tutor.learning_diff}}" name="learning_diff"></p>
+	    <p><input type="text" value="{{tutor.bio}}" name="bio"></p>
+	    <p><input type="text" value="{{tutor.failed_matches}}" name="failed_matches"></p>
+	    <p><input type="text" value="{{tutor.notes}}" name="notes"></p>
+
+	    <p><input type="submit" value="Update"></p>
+	</form>
+    {{/block}}
+  </section>
+</body>
+</html>
+

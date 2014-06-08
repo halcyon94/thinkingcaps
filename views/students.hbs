@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}Students{{/block}}</title>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    } 
+    td{
+      white-space: nowrap;
+      overflow: hidden;
+      height: 25px;
+      border: 1px solid black;
+    }
+    table{
+      table-layout:fixed;
+    }
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+  <h1>Student List</h1>
+  <p>You have <strong>{{ students.length }}</strong> Student(s)!</p>
+  <p><a href="/student/new">Add a student</a></p>
+  <table border="1" id="tutors">
+      <tr>
+          <td>Student Name</td>
+	  <td><p>Status</p></td>
+	  <td><p>Parent Name</p></td>
+	  <td><p>Cell Phone</p></td>
+	  <td><p>Home Phone</p></td>
+	  <td><p>Email</p></td>
+      </tr>
+    {{#each students}}
+      <tr>
+          <td><a href="/student/{{this._id}}"><strong>{{ this.name }}</strong></a></td>
+	  <td><p>{{this.status}}</p></td>
+	  <td><p>{{this.parent_name}}</p></td>
+	  <td><p>{{this.cell_num}}</p></td>
+	  <td><p>{{this.home_num}}</p></td>
+	  <td><p>{{this.email}}</p></td>
+      </tr>
+    {{/each}}
+  </table>
+    {{/block}}
+  </section>
+</body>
+</html>

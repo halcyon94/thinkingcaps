@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}{{student.name}} {{/block}}</title>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+  <h1>{{ student.name }}</h1>
+  <p>{{student.address_home}}</p>
+  <p>{{student.address_bill}}</p>
+  {{#each student.tutors}}
+    <p>{{this.name}}:{{this.subject}}:{{this.ad}}</p>
+  {{/each}}
+  <p>{{student.location_code}}</p>
+  <p>{{student.school}}</p>
+  <p>{{student.age}}</p>
+  <p>{{student.accom}}</p>
+  <p>{{student.refer}}</p>
+  <p>{{student.notes}}</p>
+  <p><i>Created On: </i> {{ student.created_on }}</p>
+  <p><i>Last Updated On: </i> {{ student.updated_on }}</p>
+  <p><a href="/student/edit/{{student._id}}">Edit</a></p> 
+  <p><a href="/student/delete/{{student._id}}">Delete</a></p>
+  <p><a href="/students">Back to List</a></p>
+    {{/block}}
+  </section>
+</body>
+</html>
+

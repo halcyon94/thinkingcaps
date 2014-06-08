@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{#block "title"}}Edit Student{{/block}}</title>
+    <script language="javascript">
+  tutor_num = {{student.tutors.length}};
+  function add() {
+    var num=tutor_num;
+    var tutor = document.createElement('input');
+    tutor.setAttribute('type', 'text');
+    tutor.setAttribute('name', 'tutor'+num);
+    tutor.setAttribute('placeholder', 'tutor'+num);
+    document.getElementById('tutors').appendChild(tutor);
+    var subject = document.createElement('input');
+    subject.setAttribute('type', 'text');
+    subject.setAttribute('name', 'subject'+num);
+    subject.setAttribute('placeholder', 'subject'+num);
+    document.getElementById('tutors').appendChild(subject);
+    var AD = document.createElement('input');
+    AD.setAttribute('type', 'text');
+    AD.setAttribute('name', 'AD'+num);
+    AD.setAttribute('placeholder', 'AD'+num);
+    document.getElementById('tutors').appendChild(AD);
+    tutor_num = tutor_num+1;
+    document.getElementById("tutor_id").value=tutor_num;
+  }
+
+  </script>
+  <style>
+    body {
+      padding: 80px;
+      font: 16px Helvetica, Arial;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    #posts {
+      margin: 0;
+      padding: 0;
+    }
+
+    #posts li {
+      margin: 40px 0;
+      padding: 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      list-style: none;
+    }
+
+    #posts li:last-child {
+      border-bottom: none;
+    }
+
+    textarea {
+      width: 500px;
+      height: 300px;
+    }
+
+    input[type=text],
+    textarea {
+      border: 1px solid #eee;
+      border-top-color: #ddd;
+      border-left-color: #ddd;
+      border-radius: 2px;
+      padding: 15px;
+      font-size: .8em;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <section id="content">
+    {{#block "content"}}
+	<h1>Edit Student </h1>
+	<form action="/student/update" method="post">
+	    <p><input type="hidden" value="{{ student._id }}" name="id"></p>
+            <p><input type="hidden" name="tutor_num" id="tutor_id" value="{{student.tutors.length}}"></p>
+	    <p><input type="text" value="{{ student.name }}" name="name"></p>
+            <p><input type="radio" value="active" name="status">Active</p>
+            <p><input type="radio" value="inactive" name="status">Inactive</p>
+            <p><input type="radio" value="prospect" name="status">Prospect</p>
+            <p><input type="radio" value="did not move forward" name="status">Did not move forward</p> 
+	    <p><input type="text" value="{{ student.parent_name }}" name="parent_name"></p>
+	    <p><input type="text" value="{{ student.cell_num }}" name="cell_num"></p>
+	    <p><input type="text" value="{{ student.home_num }}" name="home_num"></p>
+	    <p><input type="text" value="{{ student.email }}" name="email"></p>
+	    {{#each student.tutors}}
+            <p><input type="text" value="{{this.name}}" name="tutor{{@index}}">
+            <input type="text" value="{{this.subject}}" name="subject{{@index}}">
+            <input type="text" value="{{this.ad}}" name="AD{{@index}}">
+            </p>
+            {{/each}}
+            <p id="tutors"> </p>
+            <input type="button" onClick="add()" value="Add Tutor">
+	    <p><input type="text" value="{{student.address_home}}" name="address_home"></p>
+	    <p><input type="text" value="{{student.location_code}}" name="location_code"></p>
+	    <p><input type="text" value="{{student.address_bill}}" name="address_bill"></p>
+	    <p><input type="text" value="{{student.school}}" name="school"></p>
+	    <p><input type="text" value="{{student.age}}" name="age"></p>
+            <p><input type="text" value="{{student.accom}}" name="accom"></p>
+            <p><input type="text" value="{{student.refer}}" name="refer"></p>
+            <p><input type="text" value="{{student.notes}}" name="notes"></p>
+
+	    <p><input type="submit" value="Update"></p>
+	</form>
+    {{/block}}
+  </section>
+</body>
+</html>
+
