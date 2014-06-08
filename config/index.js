@@ -6,7 +6,6 @@ var hbs = require('koa-hbs');
 var helmet = require('koa-helmet');
 var router = require('koa-router');
 var path = require('path');
-var viewsPath = path.join(__dirname, '../views');
 
 //mongodb configs
 var monk = require('monk');
@@ -19,7 +18,7 @@ var config = {
     app.use(common.logger());
     app.use(common.compress());
     app.use(hbs.middleware({
-      viewPath: viewsPath
+      viewPath: path.join(__dirname, '../views')
     }));
     app.use(common.static(path.join(__dirname, '../public')));
     app.use(router(app));
