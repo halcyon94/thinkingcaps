@@ -87,7 +87,8 @@ exports.remove = function *(id) {
         multi:true
       });
     this.redirect('/students');
-}}
+  }
+}
 
 exports.createTutor = function *() {
   var tutor = this.request.body;

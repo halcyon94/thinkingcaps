@@ -22,6 +22,7 @@ var config = {
     }));
     app.use(common.static(path.join(__dirname, '../public')));
     app.use(router(app));
+    app.use(bodyparser());
     app.keys = ['secret keys for session'];
     app.use(common.session());
     app.use(flash());
