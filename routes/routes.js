@@ -4,22 +4,10 @@
 var collection = require('models/collection');
 
 exports.listTutors = function *() {
-  yield this.render(
-    'tutors', 
-    { 
-      tutors: yield collection.find(
-        {occupation:'tutor'}
-        ) 
-    });
+  yield this.render('tutors', { tutors: yield collection.find({occupation:'tutor'}) });
 }
 exports.listStudents = function *() {
-  yield this.render(
-    'students',
-    { 
-      students: yield collection.find(
-        {occupation:'student'}
-        )
-    });
+  yield this.render('students',{ students:yield collection.find({occupation:'student'})});
 }
 exports.addTutor = function *() {
   yield this.render('newTutor');
@@ -28,7 +16,7 @@ exports.addStudent = function *() {
   yield this.render('newStudent');
 }
 exports.edit = function *(id) {
-    var result = yield collection.findById(id);
+    var result = yield collection.findById(this.params.id);
     if (!result) {
       this.throw(404, 'invalid id');
     }
@@ -41,11 +29,11 @@ exports.edit = function *(id) {
 }
 
 exports.show = function *(id) {
-  var result = yield collection.findById(id);
+  var result = yield collection.findById(this.params.id);
   if (!result) {
     this.throw(404, 'invalid id');
   }
-  if(result.occupation === 'tutor') {
+  if(result.occupation == 'tutor') {
     yield this.render('showTutor', {tutor:result});
   } else {
     yield this.render('showStudent',{student:result});
@@ -54,8 +42,8 @@ exports.show = function *(id) {
 
 //removing should be done by email addresses which are unique
 exports.remove = function *(id) {
-  var result = yield collection.findById(id);
-  yield collection.remove({"_id":id});
+  var result = yield collection.findById(this.params.id);
+  yield collection.remove({"_id":this.params.id});
   if(result.occupation === 'tutor'){
     collection.update(
       {
@@ -99,12 +87,10 @@ exports.remove = function *(id) {
         multi:true
       });
     this.redirect('/students');
-  }
-}
+}}
 
 exports.createTutor = function *() {
   var tutor = this.request.body;
-  console.log(tutor);
   var date = new Date();
   var haha = yield collection.find(
     {
@@ -135,28 +121,21 @@ exports.createTutor = function *() {
     created_on : date,
     updated_on : date
   })
-  var i=haha.length;
-  var student_inc = [];
-  haha.forEach(function(doc){student_inc[i]=doc;i--;});
-  for(i=haha.length;i>0;i--){
-/*
-  collection.aggregation([{$match:{name:student_inc.name}},
-                        {$unwind:'$tutors'},{$match:  {'tutors.name':tutor.name}},
-                        {$group:{_id:'$_id',tutors:{$push:'$tutors.subject'}}}
-                        ]);*/
-  console.log(student_inc[i].name);
-  yield collection.update({email:tutor.email},{$push:{
-      students:{name:student_inc[i].name,
-                subject:'null',
-                ad:'null'}
-     }});
-  }
   this.redirect('/tutors');
 }
 
 exports.updateTutor = function *() {
     var tutor = this.request.body;
-  var haha = yield collection.find({occupation:'student',tutors:{$elemMatch:{name:tutor.name}}});
+  var haha = yield collection.find(
+    {
+      occupation:'student',
+      tutors:{
+        $elemMatch:{
+          name:tutor.name
+        }
+      }
+    }
+  );
     yield collection.updateById(tutor.id, { $set: {
     name:tutor.name,
     email:tutor.email,
@@ -166,7 +145,6 @@ exports.updateTutor = function *() {
     weekday:tutor.weekday,
     hours:tutor.hours,
     AD:tutor.AD,
-    students:[],
     address:tutor.address,
     interests:tutor.interests,
     learning_diff:tutor.learning_diff,
@@ -175,22 +153,6 @@ exports.updateTutor = function *() {
     notes:tutor.notes,
     updated_on : new Date()
  }})
-  var i=haha.length;
-  var student_inc = [];
-  haha.forEach(function(doc){student_inc[i]=doc;i--});
-  for(i=haha.length;i>0;i--){
-/*
-  this will return the subject and the ad, which are currently set to null
-  collection.aggregation([{$match:{name:student_inc.name}},
-                        {$unwind:'$tutors'},{$match:  {'tutors.name':tutor.name}},
-                        {$group:{_id:'$_id',tutors:{$push:'$tutors.subject'}}}
-                        ]);*/
-  yield collection.update({email:tutor.email},{$push:{
-      students:{name:student_inc[i].name,
-                subject:'null',
-                ad:'null'}
-     }});
-  }
     this.redirect('/tutor/'+tutor.id);
 }
 
@@ -220,13 +182,31 @@ exports.createStudent = function *() {
     var c_tutor='tutor'+i.toString();
     var c_subject='subject'+i.toString();
     var c_ad = 'AD'+i.toString();
+    if(student[c_tutor] == ""){
+      continue;}
     yield collection.update({email:student.email},{$push:{
       tutors:{name:student[c_tutor],
               subject:student[c_subject],
               ad:student[c_ad]}
      }});
-    
-  
+    yield collection.update({name:student[c_tutor]},{$set:{students:[]}});
+    var haha = yield collection.find({occupation:'student',tutors:{$elemMatch:{name:student[c_tutor]}}});
+    var j=haha.length;
+    var student_inc = [];
+    haha.forEach(function(doc){student_inc[j]=doc;j--});
+    for(j=haha.length;j>0;j--){
+    /*
+    this will return the subject and the ad, which are currently set to null
+    collection.aggregation([{$match:{name:student_inc.name}},
+                        {$unwind:'$tutors'},{$match:  {'tutors.name':tutor.name}},
+                        {$group:{_id:'$_id',tutors:{$push:'$tutors.subject'}}}
+                        ]);*/
+    yield collection.update({name:student[c_tutor]},{$push:{
+      students:{name:student_inc[j].name,
+                subject:'null',
+                ad:'null'}
+    }});
+    }     
   }
   this.redirect('/students');
 }
@@ -256,13 +236,37 @@ exports.updateStudent = function *() {
     var c_tutor='tutor'+i.toString();
     var c_subject='subject'+i.toString();
     var c_ad = 'AD'+i.toString();
+    if(student[c_tutor] == ""){
+      continue;
+    }      
     yield collection.update({email:student.email},{$push:{
       tutors:{name:student[c_tutor],
               subject:student[c_subject],
               ad:student[c_ad]}
      }});
-    
-  
+    yield collection.update({name:student[c_tutor]},{$set:{students:[]}});
+    var haha = yield collection.find({occupation:'student',tutors:{$elemMatch:{name:student[c_tutor]}}});
+    var j=haha.length;
+    var student_inc = [];
+    haha.forEach(function(doc){student_inc[j]=doc;j--});
+    for(j=haha.length;j>0;j--){
+    /*
+    this will return the subject and the ad, which are currently set to null
+    collection.aggregation([{$match:{name:student_inc.name}},
+                        {$unwind:'$tutors'},{$match:  {'tutors.name':tutor.name}},
+                        {$group:{_id:'$_id',tutors:{$push:'$tutors.subject'}}}
+                        ]);*/
+/*    yield collection.update({students:{$elemMatch:{name:student.name}}},
+                          {$pull:{students:{name:student.name,
+                                  subject:'null',
+                                  ad:'null'}}},
+                          {multi:true}); */
+    yield collection.update({name:student[c_tutor]},{$push:{
+      students:{name:student_inc[j].name,
+                subject:'null',
+                ad:'null'}
+    }});
+    }          
   }
   this.redirect('/students');
 }
