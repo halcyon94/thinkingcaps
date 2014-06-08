@@ -16,13 +16,13 @@ var config = {
   configure: function(app) {
     app.use(common.responseTime());
     app.use(common.logger());
+    app.use(bodyparser());
     app.use(common.compress());
     app.use(hbs.middleware({
       viewPath: path.join(__dirname, '../views')
     }));
     app.use(common.static(path.join(__dirname, '../public')));
     app.use(router(app));
-    app.use(bodyparser());
     app.keys = ['secret keys for session'];
     app.use(common.session());
     app.use(flash());

@@ -92,6 +92,7 @@ exports.remove = function *(id) {
 
 exports.createTutor = function *() {
   var tutor = this.request.body;
+  console.log(tutor);
   var date = new Date();
   var haha = yield collection.find(
     {
