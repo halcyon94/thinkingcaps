@@ -8,3 +8,5 @@ root directory (here) <br>
 └── views // The view rendered by the server to the client (e.g. Handlebars template, ...) <br>
 <br>
 Each module should be <b>standalone</b>!
+
+EDITED by me
