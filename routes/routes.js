@@ -4,10 +4,22 @@
 var collection = require('models/collection');
 
 exports.listTutors = function *() {
-  yield this.render('tutors', { tutors: yield collection.find({occupation:'tutor'}) });
+  yield this.render(
+    'tutors', 
+    { 
+      tutors: yield collection.find(
+        {occupation:'tutor'}
+        ) 
+    });
 }
 exports.listStudents = function *() {
-  yield this.render('students',{ students:yield collection.find({occupation:'student'})});
+  yield this.render(
+    'students',
+    { 
+      students: yield collection.find(
+        {occupation:'student'}
+        )
+    });
 }
 exports.addTutor = function *() {
   yield this.render('newTutor');
@@ -33,7 +45,7 @@ exports.show = function *(id) {
   if (!result) {
     this.throw(404, 'invalid id');
   }
-  if(result.occupation == 'tutor') {
+  if(result.occupation === 'tutor') {
     yield this.render('showTutor', {tutor:result});
   } else {
     yield this.render('showStudent',{student:result});
