@@ -58,7 +58,13 @@
     {{#block "content"}}
   <h1>{{ tutor.name }}</h1>
 <!-- add in hidden fields for potentially 7 days of work -->
-  <p>{{tutor.weekday}}:{{tutor.hours}}</p>
+  <p>Monday:{{tutor.hours1}}</p>
+  <p>Tuesday:{{tutor.hours2}}</p>
+  <p>Wednesday:{{tutor.hours3}}</p>
+  <p>Thursday:{{tutor.hours4}}</p>
+  <p>Friday:{{tutor.hours5}}</p>
+  <p>Saturday:{{tutor.hours6}}</p>
+  <p>Sunday:{{tutor.hours7}}</p>
   <p>{{tutor.email}}</p>
   <p>{{tutor.address}}</p>
   {{#each tutor.students}}
